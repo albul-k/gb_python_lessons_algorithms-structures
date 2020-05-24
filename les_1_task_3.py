@@ -8,16 +8,18 @@ c. случайный символ.
 
 import random
 
-min = int(input('Введите целое число (начальное значение диапозона)\n'))
-max = int(input('Введите целое число (конечное значение диапозона)\n'))
-print(random.randint(min, max))
+num_min = int(input('Введите целое число (начальное значение диапозона)\n'))
+num_max = int(input('Введите целое число (конечное значение диапозона)\n'))
+print(random.randint(num_min, num_max))
 
-min = float(input('Введите вещественное число (начальное значение диапозона)\n'))
-max = float(input('Введите вещественное число (конечное значение диапозона)\n'))
-print(random.uniform(min, max))
+num_min = float(
+    input('Введите вещественное число (начальное значение диапозона)\n'))
+num_max = float(
+    input('Введите вещественное число (конечное значение диапозона)\n'))
+print(random.uniform(num_min, num_max))
 
 char_tuple = ('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
               'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z')
-min = char_tuple.index(input('Введите символ от a до z\n'))
-max = char_tuple.index(input('Введите символ от a до z\n'))
-print(char_tuple[random.randint(min, max)])
+char_beg = char_tuple.index(input('Введите символ от a до z\n'))
+char_end = char_tuple.index(input('Введите символ от a до z\n'))
+print(char_tuple[random.randint(char_beg, char_end)])
