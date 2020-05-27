@@ -10,8 +10,7 @@ random_int = random.randint(0, 100)
 i = 1
 while True:
     num_inp = int(input(f'Введите число от 0 до 100 (попытка №{i}): '))
-    if num_inp == random_int:
-        print('Ура! Вы угадали число!')
+    if num_inp == random_int or i > 10:
         break
     elif num_inp > random_int:
         i += 1
@@ -20,6 +19,7 @@ while True:
         i += 1
         print('Введенное число меньше отгадываемого\n')
 
-    if i > 10:
-        print(f'Вам не удалось отгадать...=( Загаданное число: {random_int}')
-        break
+if i > 10:
+    print(f'Вам не удалось отгадать...=( Загаданное число: {random_int}')
+else:
+    print('Ура! Вы угадали число!')
