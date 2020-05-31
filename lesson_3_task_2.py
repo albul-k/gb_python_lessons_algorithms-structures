@@ -5,7 +5,7 @@
 
 
 def even_num_indexes(data: list) -> list:
-    return [key for key, value in enumerate(data) if value & 1 == 0]
+    return [ind for ind, value in enumerate(data) if value & 1 == 0]
 
 
 if __name__ == "__main__":
