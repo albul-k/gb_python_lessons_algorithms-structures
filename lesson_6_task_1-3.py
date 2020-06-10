@@ -23,24 +23,13 @@ def even_num_indexes(data: list) -> list:
 
 
 if __name__ == "__main__":
-    even_num_indexes([8, 3, 15, 6, 4, 2])
+    file_data = 'data.txt'
+    try:
+        with open(file_data, 'r', encoding='UTF-8') as f_in:
+            data = list(map(lambda itm: int(itm), f_in.readline().split()))
+    except IOError:
+        print("Произошла ошибка ввода/вывода файла")
 
+    even_num_indexes(data)
 
-# python -m memory_profiler .\lesson_6_task_1-3.py
-# Filename: .\lesson_6_task_1-3.py
-
-# Line #    Mem usage    Increment   Line Contents
-# ================================================
-#     10   42.484 MiB   42.484 MiB   @profile
-#     11                             def even_num_indexes(data: list) -> list:
-#     12   42.484 MiB    0.000 MiB       def recur(ind, data_res):
-#     13   42.484 MiB    0.000 MiB           if data[ind] & 1 == 0:
-#     14   42.484 MiB    0.000 MiB               data_res.append(ind)
-#     15   42.484 MiB    0.000 MiB           ind += 1
-#     16   42.484 MiB    0.000 MiB           if ind+1 > len(data):
-#     17   42.484 MiB    0.000 MiB               return
-#     18   42.484 MiB    0.000 MiB           recur(ind, data_res)
-#     19   42.484 MiB    0.000 MiB           return
-#     20   42.484 MiB    0.000 MiB       data_res = []
-#     21   42.484 MiB    0.000 MiB       recur(0, data_res)
-#     22   42.484 MiB    0.000 MiB       return data_res
+# проанализировать при тех же условиях не удалось из-за RecursionError

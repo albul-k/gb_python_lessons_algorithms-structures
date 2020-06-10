@@ -7,7 +7,6 @@
 # pip install -U memory_profiler
 
 
-@profile
 def isEven(itm):
     if itm & 1 == 0:
         return True
@@ -21,7 +20,14 @@ def even_num_indexes(data: list) -> list:
 
 
 if __name__ == "__main__":
-    even_num_indexes([8, 3, 15, 6, 4, 2])
+    file_data = 'data.txt'
+    try:
+        with open(file_data, 'r', encoding='UTF-8') as f_in:
+            data = list(map(lambda itm: int(itm), f_in.readline().split()))
+    except IOError:
+        print("Произошла ошибка ввода/вывода файла")
+
+    even_num_indexes(data)
 
 
 # python -m memory_profiler .\lesson_6_task_1-2.py
@@ -29,18 +35,6 @@ if __name__ == "__main__":
 
 # Line #    Mem usage    Increment   Line Contents
 # ================================================
-#     10   42.383 MiB   42.383 MiB   @profile
-#     11                             def isEven(itm):
-#     12   42.383 MiB    0.000 MiB       if itm & 1 == 0:
-#     13   42.383 MiB    0.000 MiB           return True
-#     14                                 else:
-#     15   42.383 MiB    0.000 MiB           return False
-
-
-# Filename: .\lesson_6_task_1-2.py
-
-# Line #    Mem usage    Increment   Line Contents
-# ================================================
-#     18   42.383 MiB   42.383 MiB   @profile
-#     19                             def even_num_indexes(data: list) -> list:
-#     20   42.383 MiB   42.383 MiB       return [ind for ind, value in enumerate(data) if isEven(value) == True]
+#     17   50.719 MiB   50.719 MiB   @profile
+#     18                             def even_num_indexes(data: list) -> list:
+#     19   70.055 MiB    0.758 MiB       return [ind for ind, value in enumerate(data) if isEven(value) == True]
