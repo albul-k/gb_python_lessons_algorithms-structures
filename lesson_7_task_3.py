@@ -9,7 +9,6 @@ from statistics import median
 
 def get_med(data: list) -> int:
     quotient, remainder = divmod(len(data), 2)
-    print(remainder)
     # в нашем случае в else никогда попадать не будем, тк массив 2m + 1
     if remainder:
         return sorted(data)[quotient]
