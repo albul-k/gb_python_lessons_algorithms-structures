@@ -4,14 +4,23 @@
 '''
 
 import random
+from statistics import median
 
 
 def get_med(data: list) -> int:
-    return data[0]
+    quotient, remainder = divmod(len(data), 2)
+    print(remainder)
+    # в нашем случае в else никогда попадать не будем, тк массив 2m + 1
+    if remainder:
+        return sorted(data)[quotient]
+    else:
+        return sum(sorted(data)[quotient - 1:quotient + 1]) / 2
 
 
 if __name__ == "__main__":
-    m = 30
+    m = 10
     array = [random.randint(0, 50) for _ in range(2*m + 1)]
-    print(array)
-    print(get_med(array))
+    print(f'Исходный список: {array}')
+    print(
+        f'Поиск медианы при помощи встроенной функции median: {median(array)}')
+    print(f'Поиск медианы при помощи sorted: {get_med(array)}')
