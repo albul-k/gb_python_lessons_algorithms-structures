@@ -7,7 +7,7 @@ import random
 import operator
 
 
-def merge(left, right, compare):
+def merge(left: list, right: list, compare: any):
     result = []
     i, j = 0, 0
     while i < len(left) and j < len(right):
@@ -26,7 +26,7 @@ def merge(left, right, compare):
     return result
 
 
-def my_merge_sort(data: list, compare=operator.lt) -> list:
+def my_merge_sort(data: list, compare: any) -> list:
     if len(data) < 2:
         return data[:]
     else:
@@ -41,4 +41,4 @@ if __name__ == "__main__":
     array = [round(random.randint(0, 49)*random.random(), 2)
              for _ in range(num)]
     print(array)
-    print(my_merge_sort(array))
+    print(my_merge_sort(array, operator.lt))
