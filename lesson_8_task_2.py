@@ -2,14 +2,15 @@
 2. Доработать алгоритм Дейкстры (рассматривался на уроке), чтобы он дополнительно возвращал список вершин, которые необходимо обойти.
 '''
 
+from collections import deque
+
 
 def dijkstra(graph: list, start: int):
     length = len(graph)
     is_visited = [False] * length
     cost = [float('inf')] * length
     parent = [None for _ in range(len(graph))]
-
-    _t = []
+    path = {}
 
     cost[start] = 0
     min_cost = 0
@@ -31,9 +32,18 @@ def dijkstra(graph: list, start: int):
             if min_cost > cost[i] and not is_visited[i]:
                 min_cost = cost[i]
                 start = i
-                _t.append(i)
 
-    return cost, _t
+        path_tmp, current_vertex = deque(), start
+        while parent[current_vertex] is not None:
+            path_tmp.appendleft(current_vertex)
+            current_vertex = parent[current_vertex]
+        if path_tmp:
+            path_tmp.appendleft(current_vertex)
+
+        if path.get(start) == None:
+            path[start] = path_tmp
+
+    return cost, path
 
 
 if __name__ == "__main__":
